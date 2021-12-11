@@ -51,3 +51,23 @@ sns.swarmplot(x='day',y='total_bill',data=tips)
 
 #Factor plot, can call in any plot based on the kind parameter.
 sns.factorplot(x='day',y='total_bill',data=tips, kind='bar')
+
+#3 Matrix Plots
+
+#Correlation table
+tc = tips.corr()
+
+#Heat map
+sns.heatmap(tc,annot=True,cmap='coolwarm')
+
+fp = flights.pivot_table(index='month', columns='year', values='passengers')
+
+sns.heatmap(fp,cmap='magma',linecolor='white',linewidths=1)
+
+
+#Cluster Map
+sns.clustermap(fp,cmap='coolwarm',standard_scale=1)
+
+
+
+
