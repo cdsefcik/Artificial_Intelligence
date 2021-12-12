@@ -69,5 +69,38 @@ sns.heatmap(fp,cmap='magma',linecolor='white',linewidths=1)
 sns.clustermap(fp,cmap='coolwarm',standard_scale=1)
 
 
+iris = sns.load_dataset('iris')
+
+
+#4 Grid plots
+#Pairplot shows all the plots
+
+sns.pairplot(iris)
+
+#Shos all the pairplots empty
+
+g = sns.PairGrid(iris)
+
+g.map_diag(sns.distplot)
+g.map_upper(plt.scatter)
+g.map_lower(sns.scatter)
+
+
+g = sns.FacetGrid(data=tips,col='time',row='smoker')
+g.map(sns.distplot,'total_bill')
+g.map(sns.distplot,'total_bill','tip')
+
+
+#5 Regreggion Plots
+sns.lmplot(x='total_bill',y='tips',data=tips,hue='sex',markers=['o','v'],scatter_kws={'s':100})
+sns.lmplot(x='total_bill',y='tips',data=tips,col='sex',row='time')
+
+#6 Style and color
+sns.set_style('whitegrid')
+sns.countplot(x='sex',data=tips)
+sns.despine()
+plt.figure(figsize=(12,3))
+sns.countplot(x='sex',data=tips)
+
 
 
